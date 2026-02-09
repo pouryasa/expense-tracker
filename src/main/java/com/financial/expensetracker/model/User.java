@@ -40,4 +40,11 @@ public class User {
     )
     private List<Category> categories;
 
+    @OneToMany(
+            mappedBy = "user",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true
+    )
+    private List<Income> incomes;
+
 }

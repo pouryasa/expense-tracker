@@ -7,19 +7,20 @@ import org.hibernate.annotations.CreationTimestamp;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Entity
 @Getter
 @Setter
-public class Account {
+public class Income {
     @Id
     @GeneratedValue
-    private Integer accountId;
+    private Long incomeId;
 
-    private String name;
-    private String type;
-    private BigDecimal balanced;
+    private BigDecimal amount;
+    private String description;
+
+    @Column(nullable = false)
+    private LocalDateTime incomeDate;
 
     @Column(updatable = false)
     @CreationTimestamp
@@ -29,11 +30,11 @@ public class Account {
     @JoinColumn(name = "user_id")
     private User user;
 
-    @OneToMany(
-            mappedBy = "user",
-            cascade = CascadeType.ALL,
-            orphanRemoval = true
-    )
-    private List<Income> incomes;
+    @ManyToOne
+    @JoinColumn(name = "account_id")
+    private Account account;
 
+    @ManyToOne
+    @JoinColumn(name = "category_id")
+    private Category category;
 }
