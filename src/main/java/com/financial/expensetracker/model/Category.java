@@ -33,4 +33,7 @@ public class Category {
             orphanRemoval = true
     )
     private List<Income> incomes;
+
+    @OneToMany
+    private List<Expense> expenses;
 }
