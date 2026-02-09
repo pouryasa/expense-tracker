@@ -31,7 +31,7 @@ public class Account {
     private User user;
 
     @OneToMany(
-            mappedBy = "user",
+            mappedBy = "account",
             cascade = CascadeType.ALL,
             orphanRemoval = true
     )
