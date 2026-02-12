@@ -20,20 +20,21 @@ public class Category {
     @OneToMany(
             mappedBy = "category"
     )
-
-    private List<Account> Budget;
+    private List<Budget> budgets;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
 
     @OneToMany(
-            mappedBy = "user",
+            mappedBy = "category",
             cascade = CascadeType.ALL,
             orphanRemoval = true
     )
     private List<Income> incomes;
 
-    @OneToMany
+    @OneToMany(
+            mappedBy = "category"
+    )
     private List<Expense> expenses;
 }

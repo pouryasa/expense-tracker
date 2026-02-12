@@ -16,7 +16,7 @@ import java.util.Set;
 public class Account {
     @Id
     @GeneratedValue
-    private Integer accountId;
+    private Long accountId;
 
     private String name;
     private String type;

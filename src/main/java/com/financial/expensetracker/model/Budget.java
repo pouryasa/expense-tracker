@@ -15,7 +15,7 @@ import java.time.LocalDateTime;
 public class Budget {
     @Id
     @GeneratedValue
-    private Integer budgetId;
+    private Long budgetId;
 
     private BigDecimal amountLimit;
 
@@ -23,10 +23,10 @@ public class Budget {
     private LocalDateTime startDate;
 
     @Column(nullable = false)
-    private LocalDateTime ebdDate;
+    private LocalDateTime endDate;
 
 
     @ManyToOne
-    @JoinColumn(name = "categoty_id")
+    @JoinColumn(name = "category_id")
     private Category category;
 }
