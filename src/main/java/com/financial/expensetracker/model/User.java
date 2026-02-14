@@ -18,7 +18,7 @@ public class User {
     @GeneratedValue
     private Long userId;
 
-    private String name;
+    private String username;
     private String email;
     private String password_hash;
     private String currency;
