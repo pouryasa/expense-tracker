@@ -1,5 +1,7 @@
 package com.financial.expensetracker.controller;
 
+import com.financial.expensetracker.dto.request.UserRequest;
+import com.financial.expensetracker.dto.response.UserResponse;
 import com.financial.expensetracker.model.User;
 import com.financial.expensetracker.service.UserService;
 import org.springframework.http.ResponseEntity;
@@ -19,8 +21,10 @@ public class UserController {
     }
 
     @PostMapping
-    public ResponseEntity<User> save(@RequestBody User user) {
-        return ResponseEntity.ok(userService.save(user));
+    public ResponseEntity<UserResponse  > save(@RequestBody UserRequest userRequest) {
+        return ResponseEntity.ok(userService.save(userRequest));
     }
+
+
 
 }

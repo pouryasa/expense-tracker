@@ -1,5 +1,7 @@
 package com.financial.expensetracker.service;
 
+import com.financial.expensetracker.dto.request.UserRequest;
+import com.financial.expensetracker.dto.response.UserResponse;
 import com.financial.expensetracker.exception.RuleException;
 import com.financial.expensetracker.model.User;
 import com.financial.expensetracker.repository.UserRepository;
@@ -18,13 +20,29 @@ public class UserServiceImp implements UserService {
 
 
     @Override
-    public User save(User user) {
-        Optional<User> thisUsername =
-                userRepository.findByUsername(user.getUsername());
+    public UserResponse save(UserRequest userRequest) {
+        Optional<User> thisUsername = userRepository.findByUsername(userRequest.getUsername());
 
-        if(thisUsername.isPresent()) {
+        if (thisUsername.isPresent()) {
             throw new RuleException("username.is.exist");
+        } else {
+            return createUserResponse(userRepository.save(createUser(userRequest)));
         }
-        return userRepository.save(user);
+    }
+
+    private UserResponse createUserResponse(User thisUser) {
+        return UserResponse.builder()
+                .id(thisUser.getUserId())
+                .username(thisUser.getUsername())
+                .build();
+    }
+
+    private User createUser(UserRequest userRequest) {
+        return User.builder()
+                .password_hash(userRequest.getPassword())
+                .username(userRequest.getUsername())
+                .email(userRequest.getEmail())
+                .currency(userRequest.getCurrency())
+                .build();
     }
 }
