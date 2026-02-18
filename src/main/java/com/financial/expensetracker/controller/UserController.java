@@ -4,6 +4,7 @@ import com.financial.expensetracker.dto.request.UserRequest;
 import com.financial.expensetracker.dto.response.UserResponse;
 import com.financial.expensetracker.model.User;
 import com.financial.expensetracker.service.UserService;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -21,7 +22,7 @@ public class UserController {
     }
 
     @PostMapping
-    public ResponseEntity<UserResponse  > save(@RequestBody UserRequest userRequest) {
+    public ResponseEntity<UserResponse  > save(@RequestBody @Valid UserRequest userRequest) {
         return ResponseEntity.ok(userService.save(userRequest));
     }
 

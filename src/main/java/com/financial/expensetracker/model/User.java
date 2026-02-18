@@ -22,7 +22,7 @@ public class User {
 
     private String username;
     private String email;
-    private String password_hash;
+    private String password;
     private String currency;
 
     @Column(updatable = false)

@@ -19,6 +19,15 @@ public class UserServiceImp implements UserService {
     }
 
 
+    private User createUser(UserRequest userRequest) {
+        return User.builder()
+                .password(userRequest.getPassword())
+                .username(userRequest.getUsername())
+                .email(userRequest.getEmail())
+                .currency(userRequest.getCurrency())
+                .build();
+    }
+
     @Override
     public UserResponse save(UserRequest userRequest) {
         Optional<User> thisUsername = userRepository.findByUsername(userRequest.getUsername());
@@ -37,12 +46,4 @@ public class UserServiceImp implements UserService {
                 .build();
     }
 
-    private User createUser(UserRequest userRequest) {
-        return User.builder()
-                .password_hash(userRequest.getPassword())
-                .username(userRequest.getUsername())
-                .email(userRequest.getEmail())
-                .currency(userRequest.getCurrency())
-                .build();
-    }
 }
