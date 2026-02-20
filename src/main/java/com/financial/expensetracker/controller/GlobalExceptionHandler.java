@@ -2,6 +2,8 @@ package com.financial.expensetracker.controller;
 
 import com.financial.expensetracker.dto.response.ExceptionResponse;
 import com.financial.expensetracker.exception.RuleException;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.support.MessageSourceAccessor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -13,12 +15,18 @@ import java.util.stream.Collectors;
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
+    private final MessageSourceAccessor messageSourceAccessor;
+
+    public GlobalExceptionHandler(MessageSourceAccessor messageSourceAccessor) {
+        this.messageSourceAccessor = messageSourceAccessor;
+    }
+
     @ExceptionHandler(RuleException.class)
     public ResponseEntity<ExceptionResponse> handleRuleException(
             RuleException ruleException) {
 
         ExceptionResponse response = ExceptionResponse.builder()
-                .message(ruleException.getMessage())
+                .message(messageSourceAccessor.getMessage(ruleException.getMessage()))
                 .code("RULE_ERROR")
                 .build();
 
@@ -39,7 +47,7 @@ public class GlobalExceptionHandler {
 
         ExceptionResponse response = ExceptionResponse.builder()
                 .message(errorMessage)
-                .code("VALIDATION_ERROR")
+                .code("400")
                 .build();
 
         return ResponseEntity
