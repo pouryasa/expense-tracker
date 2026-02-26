@@ -31,9 +31,14 @@ public class UserServiceImp implements UserService {
     @Override
     public UserResponse save(UserRequest userRequest) {
         Optional<User> thisUsername = userRepository.findByUsername(userRequest.getUsername());
+        Optional<User> thisUserEmail = userRepository.findByEmail(userRequest.getEmail());
 
         if (thisUsername.isPresent()) {
             throw new RuleException("username.is.exist");
+
+        }
+        if (thisUserEmail.isPresent()) {
+            throw new RuleException("email.is.exist");
         } else {
             return createUserResponse(userRepository.save(createUser(userRequest)));
         }
