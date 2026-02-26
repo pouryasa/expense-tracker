@@ -21,10 +21,9 @@ public class UserController {
     }
 
     @PostMapping("/signin")
-    public ResponseEntity<UserResponse  > save(@RequestBody @Valid UserRequest userRequest) {
+    public ResponseEntity<UserResponse> save(@RequestBody @Valid UserRequest userRequest) {
         return ResponseEntity.ok(userService.save(userRequest));
     }
-
 
 
 }

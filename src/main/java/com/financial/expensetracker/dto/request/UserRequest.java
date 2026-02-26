@@ -5,7 +5,6 @@ import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 
 @Getter
-
 public class UserRequest {
     @NotNull(message = "{username.is.empty}")
     @NotBlank(message = "{currency.is.empty}")

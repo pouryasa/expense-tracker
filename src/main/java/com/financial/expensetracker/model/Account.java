@@ -1,18 +1,19 @@
 package com.financial.expensetracker.model;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Set;
 
 @Entity
 @Getter
 @Setter
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class Account {
     @Id
     @GeneratedValue
@@ -20,7 +21,7 @@ public class Account {
 
     private String name;
     private String type;
-    private BigDecimal balanced;
+    private BigDecimal balance;
 
     @Column(updatable = false)
     @CreationTimestamp
