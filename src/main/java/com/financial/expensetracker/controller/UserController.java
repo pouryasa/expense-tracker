@@ -2,7 +2,6 @@ package com.financial.expensetracker.controller;
 
 import com.financial.expensetracker.dto.request.UserRequest;
 import com.financial.expensetracker.dto.response.UserResponse;
-import com.financial.expensetracker.model.User;
 import com.financial.expensetracker.service.UserService;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
@@ -21,7 +20,7 @@ public class UserController {
         this.userService = userService;
     }
 
-    @PostMapping
+    @PostMapping("/signin")
     public ResponseEntity<UserResponse  > save(@RequestBody @Valid UserRequest userRequest) {
         return ResponseEntity.ok(userService.save(userRequest));
     }
