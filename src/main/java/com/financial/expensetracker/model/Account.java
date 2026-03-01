@@ -22,6 +22,7 @@ public class Account {
     private String name;
     private String type;
     private BigDecimal balance;
+    private String currency;
 
     @Column(updatable = false)
     @CreationTimestamp

@@ -24,7 +24,6 @@ public class UserServiceImp implements UserService {
                 .password(userRequest.getPassword())
                 .username(userRequest.getUsername())
                 .email(userRequest.getEmail())
-                .currency(userRequest.getCurrency())
                 .build();
     }
 

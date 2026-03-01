@@ -15,7 +15,4 @@ public class UserRequest {
     @NotNull(message = "{password.is.empty}")
     @NotBlank(message = "{currency.is.empty}")
     private String password;
-    @NotNull(message = "{currency.is.empty}")
-    @NotBlank(message = "{currency.is.empty}")
-    private String currency;
 }

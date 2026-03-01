@@ -23,6 +23,7 @@ public class AccountServiceImp implements AccountService {
                 .name(accountRequest.getName())
                 .type(accountRequest.getType())
                 .balance(accountRequest.getBalance())
+                .currency(accountRequest.getCurrency())
                 .build();
     }
 

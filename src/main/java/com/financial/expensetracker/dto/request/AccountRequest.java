@@ -18,4 +18,8 @@ public class AccountRequest {
 
     @NotNull(message = "{account.balance.is.empty}")
     private BigDecimal balance;
+
+    @NotNull(message = "{currency.is.empty}")
+    @NotBlank(message = "{currency.is.empty}")
+    private String currency;
 }
