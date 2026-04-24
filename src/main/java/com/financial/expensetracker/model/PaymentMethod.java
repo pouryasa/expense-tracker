@@ -1,20 +1,22 @@
 package com.financial.expensetracker.model;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.List;
 
 @Entity
 @Getter
 @Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 public class PaymentMethod {
     @Id
     @GeneratedValue
-    private Long PaymentMethodId;
+    private Long paymentMethodId;
 
-    private String name;
+    private String method;
 
     @ManyToOne
     @JoinColumn(name = "user_id")

@@ -2,13 +2,12 @@ package com.financial.expensetracker.controller;
 
 import com.financial.expensetracker.dto.response.ExceptionResponse;
 import com.financial.expensetracker.exception.RuleException;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.support.MessageSourceAccessor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
-import org.springframework.web.bind.MethodArgumentNotValidException;
 
 import java.util.stream.Collectors;
 

@@ -2,7 +2,6 @@ package com.financial.expensetracker.controller;
 
 import com.financial.expensetracker.dto.request.IncomeRequest;
 import com.financial.expensetracker.dto.response.IncomeResponse;
-import com.financial.expensetracker.repository.IncomeRepository;
 import com.financial.expensetracker.service.IncomeService;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
