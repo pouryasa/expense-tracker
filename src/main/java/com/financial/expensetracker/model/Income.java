@@ -1,26 +1,30 @@
 package com.financial.expensetracker.model;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
 @Getter
 @Setter
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class Income {
     @Id
     @GeneratedValue
     private Long incomeId;
 
+    private String title;
     private BigDecimal amount;
     private String description;
 
     @Column(nullable = false)
-    private LocalDateTime incomeDate;
+    private LocalDate incomeDate;
 
     @Column(updatable = false)
     @CreationTimestamp

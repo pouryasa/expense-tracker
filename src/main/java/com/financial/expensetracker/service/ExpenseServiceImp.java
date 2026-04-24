@@ -22,7 +22,6 @@ public class ExpenseServiceImp implements ExpenseService {
                 .title(expenseRequest.getTitle())
                 .amount(expenseRequest.getAmount())
                 .description((expenseRequest.getDescription()))
-                .description(expenseRequest.getDescription())
                 .expenseDate(expenseRequest.getExpenseDate())
                 .build();
     }
